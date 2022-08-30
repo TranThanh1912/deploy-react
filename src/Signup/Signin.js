@@ -11,7 +11,6 @@ function Signin (){
     console.log(user.pass);
     console.log(pass);
     const check =()=>{
-        if(user.name===username&&user.pass===pass){setPath('Signinconfirm')}
     }
     return(
         <div className="main">
@@ -29,6 +28,7 @@ function Signin (){
                                 <div className="form-group">
                                     <label for="your_name"><i className="zmdi zmdi-account material-icons-name"></i></label>
                                     <input type="text" name="your_name" id="your_name" placeholder="Your Name" value={username} onChange={(e)=>setUsername(e.target.value)}/>
+                                    
                                 </div>
                                 <div className="form-group">
                                     <label for="your_pass"><i className="zmdi zmdi-lock"></i></label>

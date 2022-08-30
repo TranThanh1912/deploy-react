@@ -314,7 +314,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
   
   .form-group {
     position: relative;
-    margin-bottom: 25px;
+    margin-bottom: 2px;
     overflow: hidden; }
     .form-group:last-child {
       margin-bottom: 0px; }
@@ -590,6 +590,14 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     .social-label {
       margin-right: 0px;
       margin-bottom: 10px; } }
-  
+      p{
+        margin: 0px;
+        font-size: 12px;
+        font-weight: 300;
+        color: #e72734;
+      }
+      .box{
+        margin:15px 0px 0px;
+      }
   /*# sourceMappingURL=style.css.map */
   
