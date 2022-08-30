@@ -59,17 +59,13 @@ function Signup() {
                      setCheckE('Valid Email!');
                      setColorE({color:'green'})
                     }
-                // if(!pass ==""&&true==mediumRegex.test(pass)&&true==enoughRegex.test(pass)){
-                //     e.preventDefault(); 
-                //     setCheckP('Valid Password!');
-                //     setColorP({color:'green'})
-                //     console.log(pass);
-                // } 
-                // if((false==mediumRegex.test(pass)||false==enoughRegex.test(pass))){
-                //     e.preventDefault();
-                //      setCheckP('Invalid Password!');
-                //      setColorP({color:'red'})
-                //}
+                if(!pass ==""&&true==mediumRegex.test(pass)&&true==enoughRegex.test(pass)){
+                    e.preventDefault(); 
+                    setCheckP('Valid Password!');
+                    setColorP({color:'green'})
+                    console.log(pass);
+                } 
+                
                 console.log(pass);
                 console.log(mediumRegex.test(pass));
                 console.log(enoughRegex.test(pass));
