@@ -12,7 +12,7 @@ function App() {
           <Route path="Signin" element={<Signin />} />
           <Route path="Signup" element={<Signup />} />
           <Route path="Signupcomfirm" element={<Signupcomfirm />} />
-          <Route path="Signinconfirm" element={<Signincomfirm />} />
+          <Route path="/Signin/Signincomfirm" element={<Signincomfirm />} />
       </Routes>
       
     </>

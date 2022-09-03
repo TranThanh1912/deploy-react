@@ -1,17 +1,60 @@
 import'./styles.css';
 import signin from'./images/signin-image.jpg';
 import { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 
 function Signin (){
+    const history = useNavigate();
     const user= JSON.parse(localStorage.getItem('input'));
     const [username,setUsername]=useState('')
-    const [pass,setPass]=useState('')
+    const [password,setPassword] = useState('');
     const [path,setPath]=useState('Signin')
-    console.log(user.pass);
-    console.log(pass);
-    const check =()=>{
+    const [checkU,setCheckU] = useState('')
+    const [checkP,setCheckP] = useState('');
+    const [valErrors,setVallErrors]=useState({
+        username:"",
+        password:"",
+    })
+    
+    console.log(user);  
+    const handleUsername = (e)=>{
+        var err=valErrors;
+        if(err.username) delete err.username;
+        var str = e.target.value
+        if(str=== undefined||str===null||str===""){
+            err.username="Không để trống tên"
+        }
+        setUsername(str)
+        setVallErrors(err)
+        setCheckU('')
     }
+    const handlePassWord =(e)=>{
+        var err=valErrors;
+        if(err.password) delete err.password;
+        var str = e.target.value;
+        if(str=== undefined||str ===null||str===""){
+            err.password="Không để trống mật khẩu"
+        }   
+        setPassword(str)
+        setVallErrors(err)
+        setCheckP('')
+    }
+    const check=(e)=>{
+            if (user.username===username&&user.password===password){
+                setPath("Signincomfirm")
+                history('\Signincomfirm')
+            }
+            if(user.username!==username){
+                e.preventDefault();
+                setCheckU("Nhập sai tên người dùng")
+            }
+            if(user.password!==password){
+                e.preventDefault();
+                setCheckP('Nhập sai mật khẩu !')
+                
+            }
+    }
+    console.log(valErrors);
     return(
         <div className="main">
             <section className="sign-in">
@@ -25,14 +68,21 @@ function Signin (){
                         <div className="signin-form">
                             <h2 className="form-title">Sign in</h2>
                             <form action={path} className="register-form" id="login-form">
-                                <div className="form-group">
-                                    <label for="your_name"><i className="zmdi zmdi-account material-icons-name"></i></label>
-                                    <input type="text" name="your_name" id="your_name" placeholder="Your Name" value={username} onChange={(e)=>setUsername(e.target.value)}/>
-                                    
+                                <div className="box">
+                                    <div className="form-group">
+                                        <label for="your_name"><i className="zmdi zmdi-account material-icons-name"></i></label>
+                                        <input type="text" name="your_name" id="your_name" placeholder="Your Name" value={username} onChange={handleUsername} />
+                                    </div> 
+                                    <p>{valErrors.username}</p> 
+                                    <p>{checkU}</p>
                                 </div>
-                                <div className="form-group">
-                                    <label for="your_pass"><i className="zmdi zmdi-lock"></i></label>
-                                    <input type="password" name="your_pass" id="your_pass" placeholder="Password"value={pass} onChange={(e)=>setPass(e.target.value)}/>
+                                <div className='box'>
+                                    <div className="form-group">
+                                        <label for="your_pass"><i className="zmdi zmdi-lock"></i></label>
+                                        <input type="password" name="your_pass" id="your_pass" placeholder="Password" value={password} onChange={handlePassWord}/>
+                                    </div>
+                                    <p>{valErrors.password}</p>
+                                    <p>{checkP}</p>
                                 </div>
                                 <div className="form-group">
                                     <input type="checkbox" name="remember-me" id="remember-me" className="agree-term" />
